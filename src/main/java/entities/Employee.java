@@ -40,7 +40,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String ToString (){
+    public String toString (){
         return name +", "+ email +" ,"+ String.format("%.2f", salary);
     }
 }

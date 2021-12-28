@@ -27,8 +27,6 @@ public class Program {
             List<Employee> employeeList = new ArrayList<>();
             String line = br.readLine();
 
-
-
             while (line != null ){
                 String[] output = line.split(",");
                 employeeList.add(new Employee(output[0], output[1], Double.parseDouble(output[2])));
@@ -53,20 +51,19 @@ public class Program {
                     .filter(p -> p.getSalary() > salary)
                     .map(p -> p.getEmail()).sorted()
                     .collect(Collectors.toList());
-
             names.forEach(System.out::println);
 
+            System.out.println("Remove Salarys more than: "+ String.format("%.2f", salary));
+
+            employeeList.removeIf(employee -> employee.getSalary() > salary);
+
+            for (Employee employee: employeeList){
+                System.out.println(employee);
+            }
+
         }catch (IOException e){
-            System.out.println("Erro ao Ler arquivo");
+            System.out.println("Error: File not found");
         }
-
-
-
-
-
-
-
-
         sc.close();
     }
 }
